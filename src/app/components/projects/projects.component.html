@@ -1,0 +1,135 @@
+<section class="projects" id="projects" #projectsSection>
+  <div class="container">
+    <!-- En-tête de section -->
+    <div class="section-header" [class.animate]="isVisible">
+      <span class="section-tag">{{ translate('projects.tag') }}</span>
+      <h2>{{ translate('projects.title') }}</h2>
+      <p class="section-description">
+        {{ translate('projects.description') }}
+      </p>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Statistiques rapides -->
+    <div class="stats-overview" [class.animate]="isVisible">
+      <div class="stat-item" *ngFor="let stat of projectStats; let i = index"
+           [style.animation-delay]="(i * 0.1) + 's'">
+        <div class="stat-icon" [innerHTML]="getIcon(stat.iconName, 20)"></div>
+        <div class="stat-number">{{ stat.value }}+</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+
+    <!-- Navigation des catégories -->
+    <div class="category-filters" [class.animate]="isVisible">
+      <button 
+        *ngFor="let category of categories; let i = index"
+        class="filter-btn"
+        [class.active]="isCategoryActive(category)"
+        (click)="selectCategory(category.name)"
+        [style.animation-delay]="(i * 0.1 + 0.3) + 's'">
+        <span class="filter-icon" [innerHTML]="getIcon(category.iconName, 16)"></span>
+        <span class="filter-name">{{ category.nameKey ? translate(category.nameKey) : category.name }}</span>
+        <span class="filter-count">{{ category.count }}</span>
+      </button>
+    </div>
+
+    <!-- Grille des projets -->
+    <div class="projects-grid" [class.animate]="isVisible">
+      <div class="project-card" 
+           *ngFor="let project of filteredProjects; let i = index"
+           [class.featured]="project.featured"
+           [style.animation-delay]="(i * 0.1 + 0.5) + 's'"
+           (click)="openProject(project.link)">
+        
+        <!-- Badge featured -->
+        <div class="featured-badge" *ngIf="project.featured">
+          <span [innerHTML]="getIcon('star', 14)"></span> {{ translate('projects.featured') }}
+        </div>
+
+        <!-- Image du projet -->
+        <div class="project-image">
+          <img [src]="project.imageUrl" [alt]="project.title + ' screenshot'" 
+               onerror="this.src='/assets/backgound_image.jpg'">
+          <div class="project-overlay">
+            <div class="project-links">
+              <button class="link-btn primary" (click)="$event.stopPropagation(); openProject(project.link)">
+                <span class="btn-icon" [innerHTML]="getIcon('link', 14)"></span>
+                {{ translate('projects.view') }}
+              </button>
+              <button class="link-btn secondary" 
+                      *ngIf="project.github"
+                      (click)="$event.stopPropagation(); openGithub(project.github)">
+                <span class="btn-icon" [innerHTML]="getIcon('github', 14)"></span>
+                {{ translate('projects.github') }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenu du projet -->
+        <div class="project-content">
+          <!-- En-tête -->
+          <div class="project-header">
+            <div class="project-meta">
+              <h3 class="project-title">{{ project.title }}</h3>
+              <div class="project-info">
+                <span class="project-year">{{ project.year }}</span>
+                <span class="project-status" 
+                      [style.background-color]="getStatusColor(project.status)">
+                  {{ getStatusTranslation(project.status) }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="project-description">{{ project.description }}</p>
+
+          <!-- Technologies -->
+          <div class="project-technologies">
+            <span class="tech-tag" *ngFor="let tech of project.technologies">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Effet de hover -->
+        <div class="card-shine"></div>
+      </div>
+    </div>
+
+    <!-- Message si aucun projet -->
+    <div class="no-projects" *ngIf="filteredProjects.length === 0" [class.animate]="isVisible">
+      <div class="no-projects-icon" [innerHTML]="getIcon('search', 48)"></div>
+      <h3>{{ translate('projects.noProjects') }}</h3>
+      <p>{{ translate('projects.tryCategory') }}</p>
+    </div>
+
+    <!-- Call to action -->
+    <div class="cta-section" [class.animate]="isVisible">
+      <div class="cta-content">
+        <h3>{{ translate('projects.cta.title') }}</h3>
+        <p>{{ translate('projects.cta.description') }}</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn-primary">
+            <span class="btn-icon" [innerHTML]="getIcon('message', 18)"></span>
+            {{ translate('about.contact') }}
+          </a>
+          <a href="/assets/CV_Djiby_Thioub.pdf" download class="btn-secondary">
+            <span class="btn-icon" [innerHTML]="getIcon('file', 18)"></span>
+            {{ translate('about.downloadCV') }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Particules de fond -->
+  <div class="background-elements">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="floating-shape shape-4"></div>
+  </div>
+</section>

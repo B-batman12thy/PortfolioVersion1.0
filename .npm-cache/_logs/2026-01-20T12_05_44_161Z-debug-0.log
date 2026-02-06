@@ -1,0 +1,143 @@
+0 verbose cli /opt/homebrew/Cellar/node@20/20.19.6/bin/node /opt/homebrew/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.6
+3 silly config load:file:/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/djiby/Documents/portfolio/portforlio/.npmrc
+5 silly config load:file:/Users/djiby/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm install
+8 verbose argv "install"
+9 verbose logfile logs-max:10 dir:/Users/djiby/Documents/portfolio/portforlio/.npm-cache/_logs/2026-01-20T12_05_44_161Z-
+10 verbose logfile /Users/djiby/Documents/portfolio/portforlio/.npm-cache/_logs/2026-01-20T12_05_44_161Z-debug-0.log
+11 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest @angular/animations@~14.3.0
+15 silly packumentCache full:https://registry.npmjs.org/@angular%2fanimations cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/@angular%2fanimations 11ms (cache hit)
+17 silly packumentCache full:https://registry.npmjs.org/@angular%2fanimations set size:2692534 disposed:false
+18 silly fetch manifest @angular/core@~14.3.0
+19 silly packumentCache full:https://registry.npmjs.org/@angular%2fcore cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/@angular%2fcore 144ms (cache hit)
+21 silly packumentCache full:https://registry.npmjs.org/@angular%2fcore set size:2838843 disposed:false
+22 silly fetch manifest rxjs@~7.5.0
+23 silly packumentCache full:https://registry.npmjs.org/rxjs cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/rxjs 23ms (cache hit)
+25 silly packumentCache full:https://registry.npmjs.org/rxjs set size:980097 disposed:false
+26 silly fetch manifest zone.js@~0.11.4
+27 silly packumentCache full:https://registry.npmjs.org/zone.js cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/zone.js 2ms (cache hit)
+29 silly packumentCache full:https://registry.npmjs.org/zone.js set size:372304 disposed:false
+30 silly fetch manifest @angular/common@~14.3.0
+31 silly packumentCache full:https://registry.npmjs.org/@angular%2fcommon cache-miss
+32 http fetch GET 200 https://registry.npmjs.org/@angular%2fcommon 4ms (cache hit)
+33 silly packumentCache full:https://registry.npmjs.org/@angular%2fcommon set size:2972963 disposed:false
+34 silly fetch manifest @angular/compiler@~14.3.0
+35 silly packumentCache full:https://registry.npmjs.org/@angular%2fcompiler cache-miss
+36 http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler 4ms (cache hit)
+37 silly packumentCache full:https://registry.npmjs.org/@angular%2fcompiler set size:2598980 disposed:false
+38 silly fetch manifest @angular/forms@~14.3.0
+39 silly packumentCache full:https://registry.npmjs.org/@angular%2fforms cache-miss
+40 http fetch GET 200 https://registry.npmjs.org/@angular%2fforms 4ms (cache hit)
+41 silly packumentCache full:https://registry.npmjs.org/@angular%2fforms set size:2631021 disposed:false
+42 silly fetch manifest @angular/platform-browser@~14.3.0
+43 silly packumentCache full:https://registry.npmjs.org/@angular%2fplatform-browser cache-miss
+44 http fetch GET 200 https://registry.npmjs.org/@angular%2fplatform-browser 5ms (cache hit)
+45 silly packumentCache full:https://registry.npmjs.org/@angular%2fplatform-browser set size:2968666 disposed:false
+46 silly fetch manifest @angular/platform-browser-dynamic@~14.3.0
+47 silly packumentCache full:https://registry.npmjs.org/@angular%2fplatform-browser-dynamic cache-miss
+48 http fetch GET 200 https://registry.npmjs.org/@angular%2fplatform-browser-dynamic 5ms (cache hit)
+49 silly packumentCache full:https://registry.npmjs.org/@angular%2fplatform-browser-dynamic set size:2973492 disposed:false
+50 silly fetch manifest @angular/router@~14.3.0
+51 silly packumentCache full:https://registry.npmjs.org/@angular%2frouter cache-miss
+52 http fetch GET 200 https://registry.npmjs.org/@angular%2frouter 4ms (cache hit)
+53 silly packumentCache full:https://registry.npmjs.org/@angular%2frouter set size:2869751 disposed:false
+54 silly fetch manifest @angular-devkit/build-angular@~14.2.13
+55 silly packumentCache full:https://registry.npmjs.org/@angular-devkit%2fbuild-angular cache-miss
+56 http fetch GET 200 https://registry.npmjs.org/@angular-devkit%2fbuild-angular 6ms (cache hit)
+57 silly packumentCache full:https://registry.npmjs.org/@angular-devkit%2fbuild-angular set size:3894917 disposed:false
+58 silly fetch manifest @angular/compiler-cli@~14.3.0
+59 silly packumentCache full:https://registry.npmjs.org/@angular%2fcompiler-cli cache-miss
+60 http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler-cli 4ms (cache hit)
+61 silly packumentCache full:https://registry.npmjs.org/@angular%2fcompiler-cli set size:3134456 disposed:false
+62 silly fetch manifest typescript@~4.6.2
+63 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+64 http fetch GET 200 https://registry.npmjs.org/typescript 14ms (cache hit)
+65 silly packumentCache full:https://registry.npmjs.org/typescript set size:15148409 disposed:false
+66 silly fetch manifest @angular/localize@^14.0.0
+67 silly packumentCache full:https://registry.npmjs.org/@angular%2flocalize cache-miss
+68 http fetch GET 200 https://registry.npmjs.org/@angular%2flocalize 4ms (cache hit)
+69 silly packumentCache full:https://registry.npmjs.org/@angular%2flocalize set size:2256510 disposed:false
+70 silly fetch manifest @angular/service-worker@^14.0.0
+71 silly packumentCache full:https://registry.npmjs.org/@angular%2fservice-worker cache-miss
+72 http fetch GET 200 https://registry.npmjs.org/@angular%2fservice-worker 5ms (cache hit)
+73 silly packumentCache full:https://registry.npmjs.org/@angular%2fservice-worker set size:2787713 disposed:false
+74 silly fetch manifest karma@~6.3.0
+75 silly packumentCache full:https://registry.npmjs.org/karma cache-miss
+76 http fetch GET 200 https://registry.npmjs.org/karma 5ms (cache hit)
+77 silly packumentCache full:https://registry.npmjs.org/karma set size:3361521 disposed:false
+78 silly fetch manifest ng-packagr@^14.0.0
+79 silly packumentCache full:https://registry.npmjs.org/ng-packagr cache-miss
+80 http fetch GET 200 https://registry.npmjs.org/ng-packagr 4ms (cache hit)
+81 silly packumentCache full:https://registry.npmjs.org/ng-packagr set size:1080091 disposed:false
+82 silly fetch manifest tslib@^2.3.0
+83 silly packumentCache full:https://registry.npmjs.org/tslib cache-miss
+84 http fetch GET 200 https://registry.npmjs.org/tslib 1ms (cache hit)
+85 silly packumentCache full:https://registry.npmjs.org/tslib set size:108760 disposed:false
+86 silly fetch manifest protractor@^7.0.0
+87 silly packumentCache full:https://registry.npmjs.org/protractor cache-miss
+88 http fetch GET 200 https://registry.npmjs.org/protractor 1ms (cache hit)
+89 silly packumentCache full:https://registry.npmjs.org/protractor set size:265914 disposed:false
+90 silly fetch manifest tailwindcss@^2.0.0 || ^3.0.0
+91 silly packumentCache full:https://registry.npmjs.org/tailwindcss cache-miss
+92 http fetch GET 200 https://registry.npmjs.org/tailwindcss 9ms (cache hit)
+93 silly packumentCache full:https://registry.npmjs.org/tailwindcss set size:10106959 disposed:false
+94 silly fetch manifest @angular/cli@~14.2.13
+95 silly packumentCache full:https://registry.npmjs.org/@angular%2fcli cache-miss
+96 http fetch GET 200 https://registry.npmjs.org/@angular%2fcli 6ms (cache hit)
+97 silly packumentCache full:https://registry.npmjs.org/@angular%2fcli set size:2997909 disposed:false
+98 verbose stack Error: could not resolve
+98 verbose stack     at PlaceDep.failPeerConflict (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/place-dep.js:503:25)
+98 verbose stack     at new PlaceDep (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/place-dep.js:157:21)
+98 verbose stack     at #buildDepStep (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:917:18)
+98 verbose stack     at async Arborist.buildIdealTree (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:181:7)
+98 verbose stack     at async Promise.all (index 1)
+98 verbose stack     at async Arborist.reify (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:131:5)
+98 verbose stack     at async Install.exec (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/lib/commands/install.js:150:5)
+98 verbose stack     at async Npm.exec (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/lib/npm.js:207:9)
+98 verbose stack     at async module.exports (/opt/homebrew/Cellar/node@20/20.19.6/lib/node_modules/npm/lib/cli/entry.js:74:5)
+99 error code ERESOLVE
+100 error ERESOLVE could not resolve
+101 error
+102 error While resolving: portforlio@0.0.0
+102 error Found: @angular-devkit/build-angular@13.3.11
+102 error node_modules/@angular-devkit/build-angular
+102 error   dev @angular-devkit/build-angular@"~14.2.13" from the root project
+102 error
+102 error Could not resolve dependency:
+102 error dev @angular-devkit/build-angular@"~14.2.13" from the root project
+102 error
+102 error Conflicting peer dependency: @angular/compiler-cli@14.3.0
+102 error node_modules/@angular/compiler-cli
+102 error   peer @angular/compiler-cli@"^14.0.0" from @angular-devkit/build-angular@14.2.13
+102 error   node_modules/@angular-devkit/build-angular
+102 error     dev @angular-devkit/build-angular@"~14.2.13" from the root project
+102 error
+102 error Fix the upstream dependency conflict, or retry
+102 error this command with --force or --legacy-peer-deps
+102 error to accept an incorrect (and potentially broken) dependency resolution.
+103 error
+103 error
+103 error For a full report see:
+103 error /Users/djiby/Documents/portfolio/portforlio/.npm-cache/_logs/2026-01-20T12_05_44_161Z-eresolve-report.txt
+104 silly unfinished npm timer reify 1768910744285
+105 silly unfinished npm timer reify:loadTrees 1768910744285
+106 silly unfinished npm timer idealTree:buildDeps 1768910744421
+107 silly unfinished npm timer idealTree:#root 1768910744421
+108 verbose cwd /Users/djiby/Documents/portfolio/portforlio
+109 verbose os Darwin 24.1.0
+110 verbose node v20.19.6
+111 verbose npm  v10.8.2
+112 verbose exit 1
+113 verbose code 1
+114 error A complete log of this run can be found in: /Users/djiby/Documents/portfolio/portforlio/.npm-cache/_logs/2026-01-20T12_05_44_161Z-debug-0.log

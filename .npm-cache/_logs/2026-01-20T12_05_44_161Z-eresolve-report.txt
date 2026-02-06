@@ -1,0 +1,22 @@
+'Log files:
+/Users/djiby/Documents/portfolio/portforlio/.npm-cache/_logs/2026-01-20T12_05_44_161Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: portforlio@0.0.0
+Found: @angular-devkit/build-angular@13.3.11
+node_modules/@angular-devkit/build-angular
+  dev @angular-devkit/build-angular@"~14.2.13" from the root project
+
+Could not resolve dependency:
+dev @angular-devkit/build-angular@"~14.2.13" from the root project
+
+Conflicting peer dependency: @angular/compiler-cli@14.3.0
+node_modules/@angular/compiler-cli
+  peer @angular/compiler-cli@"^14.0.0" from @angular-devkit/build-angular@14.2.13
+  node_modules/@angular-devkit/build-angular
+    dev @angular-devkit/build-angular@"~14.2.13" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

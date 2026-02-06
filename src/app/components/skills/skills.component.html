@@ -1,0 +1,111 @@
+<section class="skills" id="skills" #skillsSection>
+  <div class="container">
+    <!-- En-tête de section -->
+    <div class="section-header" [class.animate]="isVisible">
+      <span class="section-tag">{{ translate('skills.tag') }}</span>
+      <h2>{{ translate('skills.title') }}</h2>
+      <p class="section-description">
+        {{ translate('skills.description') }}
+      </p>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Statistiques rapides -->
+    <div class="stats-overview" [class.animate]="isVisible">
+      <div class="stat-item" *ngFor="let stat of stats; let i = index"
+           [style.animation-delay]="(i * 0.1) + 's'">
+        <div class="stat-icon" [innerHTML]="getIcon(stat.iconName, 20)"></div>
+        <div class="stat-number">{{ stat.value }}{{ stat.suffix }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+
+    <!-- Navigation des catégories -->
+    <div class="category-tabs" [class.animate]="isVisible">
+      <button
+        *ngFor="let category of skillCategories; let i = index"
+        class="category-tab"
+        [class.active]="activeCategory === i"
+        (click)="setActiveCategory(i)"
+        [style.animation-delay]="(i * 0.1 + 0.3) + 's'">
+
+        <ng-container *ngIf="isImageIcon(category.icon); else catEmoji">
+          <img class="tab-icon-img" [src]="category.icon" [alt]="category.title + ' icon'">
+        </ng-container>
+        <ng-template #catEmoji>
+          <span class="tab-icon">{{ category.icon }}</span>
+        </ng-template>
+
+        <span class="tab-title">{{ category.title }}</span>
+      </button>
+    </div>
+
+    <!-- Contenu des compétences -->
+    <div class="skills-content" [class.animate]="isVisible">
+      <div class="category-content"
+           *ngFor="let category of skillCategories; let categoryIndex = index"
+           [class.active]="activeCategory === categoryIndex">
+
+        <div class="skills-grid">
+          <div class="skill-card"
+               *ngFor="let skill of category.skills; let i = index"
+               [attr.data-skill]="skill.name"
+               [style.animation-delay]="(i * 0.1) + 's'">
+
+            <!-- En-tête de la carte -->
+            <div class="skill-header">
+              <div class="skill-info">
+                <ng-container *ngIf="isImageIcon(skill.icon); else skillEmoji">
+                  <img class="skill-icon-img" [src]="skill.icon" [alt]="skill.name + ' icon'">
+                </ng-container>
+                <ng-template #skillEmoji>
+                  <span class="skill-icon">{{ skill.icon }}</span>
+                </ng-template>
+
+                <div class="skill-details">
+                  <h4 class="skill-name">{{ skill.name }}</h4>
+                  <span class="skill-experience">{{ skill.experience }}</span>
+                </div>
+              </div>
+
+              <div class="skill-level-badge"
+                   [style.background-color]="getSkillColor(skill.level)">
+                {{ getSkillLevel(skill.level) }}
+              </div>
+            </div>
+
+            <!-- Barre de progression -->
+            <div class="skill-progress">
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill"
+                     [style.background-color]="getSkillColor(skill.level)">
+                </div>
+              </div>
+              <span class="skill-percentage">{{ skill.level }}%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Section bonus : Technologies explorées -->
+    <div class="exploring-section" [class.animate]="isVisible">
+      <h3><span [innerHTML]="getIcon('rocket-stats', 20)" style="display: inline-block; vertical-align: middle; margin-right: 8px;"></span>{{ translate('skills.exploring') }}</h3>
+      <div class="exploring-tags">
+        <span class="exploring-tag"
+              *ngFor="let tech of ['Vue.js', 'Svelte', 'Rust', 'Go', 'Kubernetes', 'Terraform']; let i = index"
+              [style.animation-delay]="(i * 0.05 + 0.8) + 's'">
+          {{ tech }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Particules techniques d'arrière-plan -->
+  <div class="tech-particles">
+    <div class="particle code-particle" *ngFor="let i of [1,2,3,4,5,6]">
+      {{ ['{}', '<>', '/>', '[]', '()', '&&'][i-1] }}
+    </div>
+  </div>
+</section>

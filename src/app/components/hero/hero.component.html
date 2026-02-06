@@ -1,0 +1,59 @@
+<section class="hero" id="hero">
+  <!-- Bulles animées optimisées -->
+  <div class="background-bubbles">
+    <span class="bubble bubble-1"></span>
+    <span class="bubble bubble-2"></span>
+    <span class="bubble bubble-3"></span>
+    <span class="bubble bubble-4"></span>
+    <span class="bubble bubble-5"></span>
+    <span class="bubble bubble-6"></span>
+    <span class="bubble bubble-7"></span>
+    <span class="bubble bubble-8"></span>
+    <span class="bubble bubble-9"></span>
+    <span class="bubble bubble-10"></span>
+    <span class="bubble bubble-11"></span>
+    <span class="bubble bubble-12"></span>
+    <span class="bubble bubble-13"></span>
+    <span class="bubble bubble-14"></span>
+    <span class="bubble bubble-15"></span>
+    <span class="bubble bubble-16"></span>
+    <span class="bubble bubble-17"></span>
+    <span class="bubble bubble-18"></span>
+    <span class="bubble bubble-19"></span>
+    <span class="bubble bubble-20"></span>
+  </div>
+
+  <!-- Système de particules -->
+  <div class="particles" aria-hidden="true"></div>
+
+  <!-- Contenu principal -->
+  <div class="hero-content">
+    <div class="left">
+      <div class="typing-text" [innerHTML]="displayedText"></div>
+      <a routerLink="/#contact" class="cta-button" 
+         role="button" 
+         aria-label="Aller à la section contact">
+        <span class="cta-text">{{ translate('hero.cta') }}</span>
+        <span class="cta-icon" aria-hidden="true" [innerHTML]="getIcon('arrow-right', 20)"></span>
+      </a>
+    </div>
+    
+    <div class="right">
+      <div class="image-container">
+        <img src="assets/djisonn.png" 
+             alt="Djiby Thioub - Ingénieur Logiciel & Tech Lead"
+             loading="eager"
+             class="hero-image" />
+        <div class="image-overlay" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indicateur de scroll -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span class="scroll-text">{{ translate('hero.scroll') }}</span>
+  </div>
+</section>

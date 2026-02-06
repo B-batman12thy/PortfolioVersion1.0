@@ -1,0 +1,345 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: var(--background-color);
+  z-index: 1000;
+  transition: all 0.3s ease; // Transition fluide pour toutes les propriétés
+  transform: translateY(0); // Position normale
+
+  // Animation pour cacher le header
+  &.header-hidden {
+    transform: translateY(-100%); // Déplace le header vers le haut (hors de vue)
+    transition: transform 0.3s ease;
+  }
+
+  // État normal (non scrollé)
+  &:not(.scrolled) {
+    background-color: var(--background-color);
+    box-shadow: none;
+  }
+
+  // État scrollé (transparent)
+  &.scrolled {
+    background-color: rgba(255, 255, 255, 0.1); // Transparence pour mode clair
+    backdrop-filter: blur(10px); // Effet de flou d'arrière-plan
+    -webkit-backdrop-filter: blur(10px); // Support Safari
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  // Mode sombre
+  :global(.dark-mode) & {
+    &:not(.scrolled) {
+      background-color: var(--background-color);
+    }
+
+    &.scrolled {
+      background-color: rgba(0, 0, 0, 0.2); // Transparence pour mode sombre
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .nav {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    a, button {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--accent-color);
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
+    .language-toggle,
+    .dark-toggle {
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-width: auto;
+      height: 40px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      color: var(--text-color);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+      font-size: 0.85rem;
+      // Ombre pour améliorer la visibilité en mode light
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+      .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        
+        ::ng-deep svg {
+          width: 18px;
+          height: 18px;
+          stroke: currentColor;
+          fill: none;
+          display: block;
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+      }
+
+      .lang-indicator {
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      &:hover {
+        background-color: rgba(162, 89, 255, 0.2);
+        transform: translateY(-2px);
+        border-color: rgba(162, 89, 255, 0.4);
+        box-shadow: 
+          0 6px 16px rgba(162, 89, 255, 0.3),
+          0 2px 6px rgba(0, 0, 0, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 
+          0 2px 6px rgba(162, 89, 255, 0.2),
+          0 1px 3px rgba(0, 0, 0, 0.15);
+      }
+
+      &:focus {
+        outline: 2px solid rgba(162, 89, 255, 0.5);
+        outline-offset: 2px;
+        box-shadow: 
+          0 2px 8px rgba(0, 0, 0, 0.15),
+          0 0 0 2px rgba(162, 89, 255, 0.3);
+      }
+    }
+
+    // Mode sombre - ajuster les ombres
+    :global(.dark-mode) & {
+      .language-toggle,
+      .dark-toggle {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+          0 2px 8px rgba(0, 0, 0, 0.3),
+          0 1px 3px rgba(0, 0, 0, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+        &:hover {
+          background-color: rgba(162, 89, 255, 0.15);
+          box-shadow: 
+            0 6px 16px rgba(162, 89, 255, 0.25),
+            0 2px 6px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+
+    .dark-toggle {
+      padding: 0.5rem;
+      min-width: 40px;
+      height: 40px;
+      position: relative;
+      overflow: visible;
+      
+      .icon-container {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+      }
+
+      .icon-moon,
+      .icon-sun {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -9px;
+        margin-left: -9px;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        
+        ::ng-deep svg,
+        svg {
+          width: 18px !important;
+          height: 18px !important;
+          stroke: currentColor !important;
+          fill: none !important;
+          display: block !important;
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+
+      // Par défaut (mode light) - soleil visible, lune cachée
+      .icon-sun {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: rotate(0deg) scale(1);
+        z-index: 2;
+      }
+
+      .icon-moon {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: rotate(-90deg) scale(0.5);
+        z-index: 1;
+      }
+
+      // Mode dark - lune visible, soleil caché
+      &.dark-active {
+        .icon-sun {
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transform: rotate(90deg) scale(0.5);
+          z-index: 1;
+        }
+
+        .icon-moon {
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: rotate(0deg) scale(1);
+          z-index: 2;
+        }
+      }
+
+      &:hover {
+        .icon-moon,
+        .icon-sun {
+          ::ng-deep svg {
+            filter: drop-shadow(0 2px 4px rgba(162, 89, 255, 0.4));
+          }
+        }
+      }
+    }
+  }
+
+  // Amélioration pour la lisibilité en mode transparent
+  &.scrolled .nav a,
+  &.scrolled .nav button {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  // Animation de réapparition plus douce
+  &:not(.header-hidden) {
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Easing plus fluide pour l'apparition
+  }
+
+  // Effet hover sur le header caché (quand la souris est en haut de l'écran)
+  &.header-hidden:hover {
+    transform: translateY(0);
+    transition: transform 0.2s ease;
+  }
+}
+
+// Media query pour les appareils tactiles (désactiver le hover)
+@media (hover: none) and (pointer: coarse) {
+  .header.header-hidden:hover {
+    transform: translateY(-100%); // Garder le header caché sur mobile
+  }
+}
+
+// Animation pour les liens lors de l'apparition du header
+.header:not(.header-hidden) .nav a,
+.header:not(.header-hidden) .nav button {
+  animation: fadeInLinks 0.5s ease 0.1s both;
+}
+
+@keyframes fadeInLinks {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .header {
+    height: 70px; // Header plus petit sur mobile
+    
+    .nav {
+      gap: 1rem;
+      padding: 0 1rem;
+      
+      a, button {
+        font-size: 0.9rem;
+      }
+      
+      .dark-toggle {
+        font-size: 1.1rem;
+      }
+    }
+    
+    // Sur mobile, le header se cache plus rapidement
+    &.header-hidden {
+      transition: transform 0.25s ease;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 60px; // Encore plus petit sur très petit écran
+    
+    .nav {
+      gap: 0.8rem;
+      
+      a, button {
+        font-size: 0.8rem;
+      }
+      
+      // Masquer certains liens sur très petit écran
+      a:nth-child(n+4) {
+        display: none;
+      }
+      
+      // Les icônes seront gérées via le service dans le template si nécessaire
+    }
+  }
+}

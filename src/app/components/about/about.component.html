@@ -1,0 +1,97 @@
+<section class="about" id="about" #aboutSection>
+  <div class="container">
+    <!-- En-tête de section -->
+    <div class="section-header" [class.animate]="isVisible">
+      <span class="section-tag">{{ translate('about.tag') }}</span>
+      <h2>{{ translate('about.title') }}</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="about-content">
+      <!-- Présentation principale -->
+      <div class="intro-card" [class.animate]="isVisible">
+        <div class="intro-text">
+          <!-- <h3>Salut ! Je suis <span class="highlight">Djiby Thioub</span> 👋</h3> -->
+          <p class="lead">
+            {{ translate('about.lead') }}
+          </p>
+          <p>
+            {{ translate('about.description') }}
+          </p>
+          <div class="motto">
+            <span class="quote-icon">"</span>
+            <span class="quote-text">{{ translate('about.motto') }}</span>
+            <span class="quote-icon">"</span>
+            <span class="motto-icon" [innerHTML]="getIcon('zap', 20)"></span>
+          </div>
+          
+          <!-- Boutons d'action -->
+          <div class="action-buttons">
+            <button class="btn-primary" (click)="downloadCV()">
+              <span class="btn-icon" [innerHTML]="getIcon('file', 18)"></span>
+              {{ translate('about.downloadCV') }}
+            </button>
+            <a href="#contact" class="btn-secondary">
+              <span class="btn-icon" [innerHTML]="getIcon('mail', 18)"></span>
+              {{ translate('about.contact') }}
+            </a>
+          </div>
+        </div>
+
+        <!-- Avatar ou image (optionnel) -->
+        <div class="intro-visual">
+          <div class="avatar-placeholder">
+            <span class="avatar-icon" [innerHTML]="getIcon('code-user', 48)"></span>
+          </div>
+          <div class="floating-elements">
+            <div class="floating-icon" style="--delay: 0s" [innerHTML]="getIcon('zap', 24)"></div>
+            <div class="floating-icon" style="--delay: 1s" [innerHTML]="getIcon('rocket-stats', 24)"></div>
+            <div class="floating-icon" style="--delay: 2s" [innerHTML]="getIcon('zap', 24)"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistiques -->
+      <div class="stats-section" [class.animate]="isVisible">
+        <div class="stats-grid">
+          <div class="stat-card" *ngFor="let stat of stats; let i = index" 
+               [style.animation-delay]="(i * 0.1) + 's'">
+            <div class="stat-icon" [innerHTML]="getIcon(stat.iconName, 28)"></div>
+            <div class="stat-number">{{ stat.currentValue }}{{ stat.suffix }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Valeurs et passions -->
+      <div class="values-section" [class.animate]="isVisible">
+        <h3>{{ translate('about.values.title') }}</h3>
+        <div class="values-grid">
+          <div class="value-card" *ngFor="let value of values; let i = index"
+               [style.animation-delay]="(i * 0.1) + 's'">
+            <div class="value-icon" [innerHTML]="getIcon(value.iconName, 32)"></div>
+            <h4>{{ value.title }}</h4>
+            <p>{{ value.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technologies favorites -->
+      <!-- <div class="tools-section" [class.animate]="isVisible">
+        <h3>Technologies que j'affectionne</h3>
+        <div class="tools-list">
+          <span class="tool-tag" *ngFor="let tool of favoriteTools; let i = index"
+                [style.animation-delay]="(i * 0.05) + 's'">
+            {{ tool }}
+          </span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Particules d'arrière-plan -->
+  <div class="background-particles">
+    <div class="particle" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+  </div>
+</section>

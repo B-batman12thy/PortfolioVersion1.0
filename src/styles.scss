@@ -1,0 +1,33 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --accent-color: #69409f;
+  }
+  
+  .dark-mode {
+    --background-color: #121212;
+    --text-color: #f0f0f0;
+    --accent-color: #663c93;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  

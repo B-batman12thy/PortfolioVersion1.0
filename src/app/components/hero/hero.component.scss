@@ -1,0 +1,560 @@
+// Variables globales
+:root {
+  --background-color: #0f0f0f;
+  --text-color: #ffffff;
+  --purple: #a259ff;
+  --purple-light: #b366ff;
+  --purple-dark: #8a47e6;
+  --gradient-primary: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+  --gradient-text: linear-gradient(135deg, #ffffff 0%, #a259ff 100%);
+  --gradient-button: linear-gradient(135deg, #a259ff 0%, #7c3aed 100%);
+}
+
+// Mixins utiles
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin position-absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin smooth-transition($property: all, $duration: 0.3s) {
+  transition: #{$property} #{$duration} ease;
+}
+
+// Section hero principale
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 600px;
+  background: var(--gradient-primary);
+  @include flex-center;
+  padding: 0 2rem;
+  
+  // Animation de background subtile
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(162, 89, 255, 0.1) 0%, transparent 70%);
+    animation: backgroundPulse 8s ease-in-out infinite;
+    z-index: 0;
+  }
+}
+
+@keyframes backgroundPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+// Système de bulles amélioré
+.background-bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  filter: blur(1px);
+  will-change: transform, opacity, scale;
+  
+  // Gradient radial moderne
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(161, 89, 255, 0) 0%, 
+    rgba(161, 89, 255, 0) 40%, 
+    rgba(161, 89, 255, 0.033) 70%,
+    rgba(162, 89, 255, 0.05) 100%);
+  
+  // Animation de base (mouvement seulement)
+  animation: continuousFloat 8s ease-in-out infinite;
+  
+  // Positions et tailles spécifiques pour chaque bulle
+  &.bubble-1 { width: 120px; height: 120px; top: 8%; left: 5%; animation-delay: 0s; }
+  &.bubble-2 { width: 80px; height: 80px; top: 18%; left: 88%; animation-delay: 1.2s; }
+  &.bubble-3 { width: 150px; height: 150px; top: 72%; left: 8%; animation-delay: 2.5s; }
+  &.bubble-4 { width: 60px; height: 60px; top: 12%; left: 62%; animation-delay: 0.8s; }
+  &.bubble-5 { width: 100px; height: 100px; top: 82%; left: 78%; animation-delay: 3.2s; }
+  &.bubble-6 { width: 70px; height: 70px; top: 43%; left: 12%; animation-delay: 1.8s; }
+  &.bubble-7 { width: 110px; height: 110px; top: 65%; left: 85%; animation-delay: 4s; }
+  &.bubble-8 { width: 90px; height: 90px; top: 35%; left: 38%; animation-delay: 2.2s; }
+  &.bubble-9 { width: 65px; height: 65px; top: 88%; left: 42%; animation-delay: 3.8s; }
+  &.bubble-10 { width: 130px; height: 130px; top: 22%; left: 28%; animation-delay: 1.5s; }
+  &.bubble-11 { width: 75px; height: 75px; top: 58%; left: 58%; animation-delay: 2.8s; }
+  &.bubble-12 { width: 95px; height: 95px; top: 3%; left: 48%; animation-delay: 4.5s; }
+  &.bubble-13 { width: 85px; height: 85px; top: 92%; left: 18%; animation-delay: 3.5s; }
+  &.bubble-14 { width: 55px; height: 55px; top: 38%; left: 92%; animation-delay: 1s; }
+  &.bubble-15 { width: 105px; height: 105px; top: 78%; left: 52%; animation-delay: 4.2s; }
+  &.bubble-16 { width: 115px; height: 115px; top: 15%; left: 78%; animation-delay: 0.5s; }
+  &.bubble-17 { width: 70px; height: 70px; top: 68%; left: 32%; animation-delay: 2.7s; }
+  &.bubble-18 { width: 125px; height: 125px; top: 28%; left: 72%; animation-delay: 3.9s; }
+  &.bubble-19 { width: 60px; height: 60px; top: 52%; left: 3%; animation-delay: 1.7s; }
+  &.bubble-20 { width: 140px; height: 140px; top: 88%; left: 68%; animation-delay: 4.8s; }
+  
+  // Effets hover sur les bulles
+  &:hover {
+    filter: blur(0px);
+    @include smooth-transition(filter, 0.2s);
+  }
+}
+
+// Animation principale des bulles
+@keyframes continuousFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-35px) translateX(18px) rotate(90deg) scale(1.15);
+  }
+  50% {
+    transform: translateY(-55px) translateX(-12px) rotate(180deg) scale(0.85);
+  }
+  75% {
+    transform: translateY(-25px) translateX(-28px) rotate(270deg) scale(1.08);
+  }
+}
+
+// Système de particules
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--purple);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particleFloat 12s linear infinite;
+  box-shadow: 0 0 6px var(--purple);
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translateY(90vh) translateX(20px) scale(1);
+  }
+  90% {
+    opacity: 0.8;
+    transform: translateY(-5vh) translateX(80px) scale(1);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(100px) scale(0);
+    opacity: 0;
+  }
+}
+
+// Contenu principal
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  max-width: 1400px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+// Section gauche (texte)
+.left {
+  flex: 2;
+  opacity: 0;
+  transform: translateX(-50px);
+  will-change: transform, opacity;
+}
+
+.typing-text {
+  font-size: 2.2rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(162, 89, 255, 0.3);
+    
+    .purple {
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--gradient-button);
+        border-radius: 2px;
+        animation: underlineGlow 2s ease-in-out infinite;
+      }
+    }
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #e0e0e0;
+    opacity: 0.9;
+  }
+  
+  h4 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(162, 89, 255, 0.3);
+    
+    .purple {
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--gradient-button);
+        border-radius: 2px;
+        animation: underlineGlow 2s ease-in-out infinite;
+      }
+    }
+  }
+  
+  h5 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #e0e0e0;
+    opacity: 0.9;
+  }
+  
+  p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+    color: #c0c0c0;
+    max-width: 500px;
+  }
+  
+  // Curseur de frappe animé
+  .typing-cursor {
+    display: inline-block;
+    color: var(--purple);
+    font-weight: 100;
+    animation: blinkCursor 1s infinite;
+    margin-left: 2px;
+  }
+}
+
+@keyframes blinkCursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes underlineGlow {
+  0%, 100% { box-shadow: 0 0 5px var(--purple); }
+  50% { box-shadow: 0 0 20px var(--purple), 0 0 30px var(--purple); }
+}
+
+// Bouton CTA amélioré
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.2rem 2.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--gradient-button);
+  // color: white;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+  
+  // Effet de brillance
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    @include smooth-transition(left, 0.6s);
+  }
+  
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(162, 89, 255, 0.4);
+    
+    &::before {
+      left: 100%;
+    }
+    
+    .cta-icon {
+      transform: translateX(5px);
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+  
+  .cta-text {
+    @include smooth-transition(transform);
+  }
+  
+  .cta-icon {
+    font-size: 1.2rem;
+    @include smooth-transition(transform);
+  }
+}
+
+// Section droite (image)
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(50px);
+  will-change: transform, opacity;
+}
+
+.image-container {
+  position: relative;
+  max-width: 380px;
+  width: 100%;
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    // border-radius: 20px;
+    // box-shadow: 
+    //   0 20px 60px rgba(0, 0, 0, 0.4),
+    //   0 0 0 1px rgba(162, 89, 255, 0.1);
+    // @include smooth-transition(transform, 0.4s);
+    
+    // &:hover {
+    //   transform: scale(1.05) rotate(1deg);
+    // }
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    background: linear-gradient(135deg, 
+      rgba(162, 89, 255, 0.1) 0%, 
+      transparent 50%, 
+      rgba(162, 89, 255, 0.05) 100%);
+    pointer-events: none;
+    opacity: 0;
+    @include smooth-transition(opacity);
+  }
+  
+  &:hover .image-overlay {
+    opacity: 1;
+  }
+}
+
+// Indicateur de scroll
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  animation: scrollPulse 2s ease-in-out infinite;
+  
+  .scroll-mouse {
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--purple);
+    border-radius: 12px;
+    position: relative;
+    
+    .scroll-wheel {
+      width: 4px;
+      height: 8px;
+      background: var(--purple);
+      border-radius: 2px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollWheel 1.5s ease-in-out infinite;
+    }
+  }
+  
+  .scroll-text {
+    font-size: 0.8rem;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes scrollWheel {
+  0% { top: 6px; opacity: 1; }
+  100% { top: 20px; opacity: 0; }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .hero-content {
+    max-width: 1000px;
+    gap: 3rem;
+  }
+  
+  .right .image-container {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 1rem;
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    max-width: 100%;
+  }
+  
+  .left {
+    padding-right: 0;
+    order: 2;
+  }
+  
+  .right {
+    order: 1;
+  }
+  
+  .typing-text {
+    h1 {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+    
+    h2 {
+      font-size: clamp(1.2rem, 5vw, 1.8rem);
+    }
+    
+    p {
+      font-size: clamp(0.9rem, 4vw, 1.1rem);
+    }
+  }
+  
+  .right .image-container {
+    max-width: 280px;
+  }
+  
+  // Réduire l'opacité des bulles sur mobile
+  .bubble {
+    opacity: 0.3 !important;
+    filter: blur(2px);
+  }
+  
+  // Masquer l'indicateur de scroll sur mobile
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 0.5rem;
+  }
+  
+  .cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .hero-content {
+    gap: 2rem;
+  }
+}
+
+// Animation de chargement pour les performances
+@media (prefers-reduced-motion: reduce) {
+  .bubble,
+  .particle,
+  .scroll-indicator {
+    animation: none;
+  }
+  
+  .cta-button:hover {
+    transform: none;
+  }
+  
+  .hero-image:hover {
+    transform: none;
+  }
+}
+
+// Mode sombre/clair (optionnel)
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+  }
+}

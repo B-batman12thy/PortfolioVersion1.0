@@ -1,0 +1,91 @@
+<section class="contact" id="contact" #contactSection>
+  <div class="container">
+    <!-- En-tête -->
+    <div class="section-header" [class.animate]="isVisible">
+      <span class="section-tag">{{ translate('contact.tag') }}</span>
+      <h2>{{ translate('contact.title') }}</h2>
+      <p>{{ translate('contact.description') }}</p>
+    </div>
+
+    <div class="contact-content">
+      <!-- Informations de contact -->
+      <div class="contact-info" [class.animate]="isVisible">
+        <div class="info-item">
+          <span class="icon" [innerHTML]="getIcon('mail', 24)"></span>
+          <div>
+            <h4>{{ translate('contact.info.email') }}</h4>
+            <a href="mailto:thioubdjiby96gmail.com">thioubdjiby96gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="icon" [innerHTML]="getIcon('phone', 24)"></span>
+          <div>
+            <h4>{{ translate('contact.info.phone') }}</h4>
+            <a href="tel:+221771234567">+221 77 123 45 67</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="icon" [innerHTML]="getIcon('map-pin', 24)"></span>
+          <div>
+            <h4>{{ translate('contact.info.location') }}</h4>
+            <span>{{ translate('contact.info.location.value') }}</span>
+          </div>
+        </div>
+
+        <!-- Réseaux sociaux -->
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/djiby-thioub-583880169/" target="_blank">
+            <img src="assets/icons/Linkedin.webp" alt="LinkedIn" width="30" height="30">
+          </a>
+          <a href="https://github.com/B-batman12thy" target="_blank">
+            <img src="assets/icons/github.png" alt="GitHub" width="30" height="30">
+          </a>
+          <a href="https://x.com/djibythioub" target="_blank">
+            <img src="assets/icons/X-Twitter.webp" alt="Twitter" width="30" height="30">
+          </a>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="contact-form" [class.animate]="isVisible">
+        <!-- Message de succès -->
+        <div class="success-message" *ngIf="showSuccess">
+          <span class="success-icon" [innerHTML]="getIcon('check', 24)"></span>
+          <p>{{ translate('contact.form.success') }}</p>
+        </div>
+
+        <!-- Formulaire -->
+        <form (ngSubmit)="onSubmit()" *ngIf="!showSuccess">
+          <div class="form-group">
+            <label for="name">{{ translate('contact.form.name') }} *</label>
+            <input type="text" id="name" [(ngModel)]="formData.name" name="name"
+              [placeholder]="translate('contact.form.namePlaceholder')" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">{{ translate('contact.form.email') }} *</label>
+            <input type="email" id="email" [(ngModel)]="formData.email" name="email"
+              [placeholder]="translate('contact.form.emailPlaceholder')" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">{{ translate('contact.form.message') }} *</label>
+            <textarea id="message" [(ngModel)]="formData.message" name="message"
+              [placeholder]="translate('contact.form.messagePlaceholder')" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="!isFormValid() || isSubmitting">
+            <span *ngIf="!isSubmitting"><span [innerHTML]="getIcon('send', 18)"
+                style="display: inline-block; vertical-align: middle; margin-right: 6px;"></span>{{
+              translate('contact.form.send') }}</span>
+            <span *ngIf="isSubmitting"><span [innerHTML]="getIcon('clock', 18)"
+                style="display: inline-block; vertical-align: middle; margin-right: 6px;"></span>{{
+              translate('contact.form.sending') }}</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

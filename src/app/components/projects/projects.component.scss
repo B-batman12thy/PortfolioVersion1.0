@@ -1,0 +1,770 @@
+.projects {
+  position: relative;
+  height: 100vh;
+  padding: 0 20px;
+  background: linear-gradient(135deg, var(--background-color) 0%, rgba(59, 130, 246, 0.03) 100%);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  // En-tête de section - plus compact
+  .section-header {
+    text-align: center;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+      color: white;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--text-color), #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.2rem;
+    }
+
+    .section-description {
+      font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+      color: var(--text-secondary);
+      max-width: 400px;
+      margin: 0 auto 0.3rem;
+      line-height: 1.3;
+    }
+
+    .section-line {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+  }
+
+  // Statistiques rapides - plus compact
+  .stats-overview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.3s;
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0.6rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 0.6s ease forwards;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.2);
+      }
+
+      .stat-icon {
+        font-size: 1rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .stat-number {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        font-weight: 700;
+        color: #3b82f6;
+        margin-bottom: 0.05rem;
+      }
+
+      .stat-label {
+        font-size: clamp(0.55rem, 0.7vw, 0.6rem);
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+    }
+  }
+
+  // Filtres de catégories - plus compact
+  .category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.5s;
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: popIn 0.5s ease forwards;
+
+      .filter-icon {
+        font-size: 0.9rem;
+      }
+
+      .filter-count {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+        padding: 0.05rem 0.3rem;
+        border-radius: 6px;
+        font-size: 0.55rem;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+
+      &.active {
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+
+        .filter-count {
+          background: rgba(255, 255, 255, 0.2);
+          color: white;
+        }
+      }
+    }
+  }
+
+  // Grille des projets - optimisée pour 100vh
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.8rem;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-right: -8px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.7s;
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    // Scrollbar personnalisée
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(59, 130, 246, 0.5);
+      border-radius: 2px;
+
+      &:hover {
+        background: rgba(59, 130, 246, 0.7);
+      }
+    }
+
+    .project-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInUp 0.8s ease forwards;
+      height: fit-content;
+      min-height: 280px;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+
+        .project-overlay {
+          opacity: 1;
+        }
+
+        .card-shine {
+          transform: translateX(100%);
+        }
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      &.featured {
+        border: 2px solid #3b82f6;
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+      }
+
+      .featured-badge {
+        position: absolute;
+        top: 0.6rem;
+        right: 0.6rem;
+        background: linear-gradient(45deg, #f59e0b, #f97316);
+        color: white;
+        padding: 0.15rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.55rem;
+        font-weight: 600;
+        z-index: 3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .project-image {
+        position: relative;
+        height: 120px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+
+        .project-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+
+          .project-links {
+            display: flex;
+            gap: 0.6rem;
+
+            .link-btn {
+              display: flex;
+              align-items: center;
+              gap: 0.3rem;
+              padding: 0.4rem 0.8rem;
+              border-radius: 15px;
+              font-weight: 600;
+              font-size: 0.7rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              border: none;
+
+              .btn-icon {
+                font-size: 0.8rem;
+              }
+
+              &.primary {
+                background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+                color: white;
+
+                &:hover {
+                  transform: scale(1.05);
+                  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.4);
+                }
+              }
+
+              &.secondary {
+                background: transparent;
+                color: white;
+                border: 1px solid white;
+
+                &:hover {
+                  background: white;
+                  color: #000;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .project-content {
+        padding: 0.8rem;
+
+        .project-header {
+          margin-bottom: 0.6rem;
+
+          .project-meta {
+            .project-title {
+              font-size: clamp(0.9rem, 1.1vw, 1rem);
+              font-weight: 700;
+              color: var(--text-color);
+              margin: 0 0 0.3rem 0;
+              line-height: 1.2;
+            }
+
+            .project-info {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+
+              .project-year {
+                color: var(--text-secondary);
+                font-size: 0.7rem;
+              }
+
+              .project-status {
+                padding: 0.1rem 0.4rem;
+                border-radius: 8px;
+                color: white;
+                font-size: 0.55rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+              }
+            }
+          }
+        }
+
+        .project-description {
+          color: var(--text-secondary);
+          font-size: clamp(0.7rem, 0.85vw, 0.75rem);
+          line-height: 1.4;
+          margin-bottom: 0.6rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .project-technologies {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.3rem;
+
+          .tech-tag {
+            padding: 0.15rem 0.4rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            color: #3b82f6;
+            font-size: 0.55rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: rgba(59, 130, 246, 0.2);
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+      .card-shine {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: transform 0.6s ease;
+        pointer-events: none;
+      }
+    }
+  }
+
+  // Message aucun projet
+  .no-projects {
+    text-align: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.7s;
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .no-projects-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    h3 {
+      color: var(--text-color);
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+  }
+
+  // Call to action - masqué pour économiser l'espace
+  .cta-section {
+    display: none;
+  }
+}
+
+// Particules de fond
+.background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+
+  .floating-shape {
+    position: absolute;
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+
+    &.shape-1 {
+      width: 40px;
+      height: 40px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    &.shape-2 {
+      width: 30px;
+      height: 30px;
+      top: 70%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+
+    &.shape-3 {
+      width: 50px;
+      height: 50px;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    &.shape-4 {
+      width: 35px;
+      height: 35px;
+      top: 40%;
+      right: 30%;
+      animation-delay: 6s;
+    }
+  }
+}
+
+// Animations
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-2deg);
+  }
+}
+
+
+// Responsive pour 100vh strict
+@media (max-width: 1024px) {
+  .projects {
+    .stats-overview {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .category-filters {
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.6rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 0 15px;
+
+    .container {
+      padding: 0.5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 0.6rem;
+
+      .section-description {
+        display: none;
+      }
+    }
+
+    .stats-overview {
+      margin-bottom: 0.6rem;
+
+      .stat-item {
+        padding: 0.5rem;
+
+        .stat-icon {
+          font-size: 0.9rem;
+        }
+
+        .stat-number {
+          font-size: 0.9rem;
+        }
+
+        .stat-label {
+          font-size: 0.55rem;
+        }
+      }
+    }
+
+    .category-filters {
+      margin-bottom: 0.6rem;
+
+      .filter-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.6rem;
+
+        .filter-name {
+          display: none;
+        }
+
+        .filter-icon {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+
+      .project-card {
+        min-height: 240px;
+
+        .project-image {
+          height: 100px;
+        }
+
+        .project-content {
+          padding: 0.6rem;
+
+          .project-header {
+            margin-bottom: 0.5rem;
+          }
+
+          .project-description {
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
+            -webkit-line-clamp: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    .section-header {
+      .section-tag {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.6rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    .stats-overview {
+      .stat-item {
+        padding: 0.4rem;
+
+        .stat-number {
+          font-size: 0.8rem;
+        }
+
+        .stat-label {
+          font-size: 0.5rem;
+        }
+      }
+    }
+
+    .category-filters .filter-btn {
+      padding: 0.25rem 0.5rem;
+
+      .filter-icon {
+        font-size: 0.9rem;
+      }
+
+      .filter-count {
+        font-size: 0.5rem;
+      }
+    }
+
+    .projects-grid .project-card {
+      min-height: 220px;
+
+      .project-image {
+        height: 90px;
+      }
+
+      .project-content {
+        padding: 0.5rem;
+
+        .project-header .project-meta {
+          .project-title {
+            font-size: 0.85rem;
+          }
+
+          .project-info {
+            gap: 0.3rem;
+
+            .project-year {
+              font-size: 0.6rem;
+            }
+
+            .project-status {
+              font-size: 0.5rem;
+              padding: 0.05rem 0.3rem;
+            }
+          }
+        }
+
+        .project-description {
+          font-size: 0.65rem;
+        }
+
+        .project-technologies {
+          gap: 0.2rem;
+
+          .tech-tag {
+            padding: 0.1rem 0.3rem;
+            font-size: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Écrans très hauts (pour utiliser l'espace supplémentaire)
+@media (min-height: 900px) {
+  .projects {
+    .section-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .stats-overview {
+      margin-bottom: 1.2rem;
+    }
+
+    .category-filters {
+      margin-bottom: 1.2rem;
+    }
+
+    .projects-grid {
+      gap: 1rem;
+
+      .project-card {
+        min-height: 320px;
+
+        .project-image {
+          height: 140px;
+        }
+
+        .project-content {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
