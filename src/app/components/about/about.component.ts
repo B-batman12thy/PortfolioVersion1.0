@@ -181,12 +181,18 @@ export class AboutComponent implements OnInit, OnDestroy {
     });
   }
 
+  /** Défile vers la section contact sans déclencher le routeur Angular (évite NG04002) */
+  scrollToContact(event: Event): void {
+    event.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   // Fonction pour télécharger le CV
   downloadCV(): void {
     // Remplacez par le lien vers votre CV
     const link = document.createElement('a');
-    link.href = '/assets/CV_Djiby_Thioub.pdf';
-    link.download = 'CV_Djiby_Thioub.pdf';
+    link.href = '/assets/djiby_thioub_developpeur_front-end.pdf';
+    link.download = 'djiby_thioub_developpeur_front-end.pdf';
     link.click();
   }
 }

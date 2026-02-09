@@ -112,10 +112,10 @@
         <h3>{{ translate('projects.cta.title') }}</h3>
         <p>{{ translate('projects.cta.description') }}</p>
         <div class="cta-buttons">
-          <a href="#contact" class="btn-primary">
+          <button type="button" class="btn-primary" (click)="scrollToContact()" aria-label="Aller à la section contact">
             <span class="btn-icon" [innerHTML]="getIcon('message', 18)"></span>
             {{ translate('about.contact') }}
-          </a>
+          </button>
           <a href="/assets/CV_Djiby_Thioub.pdf" download class="btn-secondary">
             <span class="btn-icon" [innerHTML]="getIcon('file', 18)"></span>
             {{ translate('about.downloadCV') }}

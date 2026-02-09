@@ -2,12 +2,12 @@
         [class.scrolled]="isScrolled"
         [class.header-hidden]="!isHeaderVisible">
   <nav class="nav">
-    <a href="#hero">{{ translate('nav.home') }}</a>
-    <a href="#about">{{ translate('nav.about') }}</a>
-    <a href="#skills">{{ translate('nav.skills') }}</a>
-    <a href="#projects">{{ translate('nav.projects') }}</a>
-    <a href="#experience">{{ translate('nav.experience') }}</a>
-    <a href="#contact">{{ translate('nav.contact') }}</a>
+    <a href="#hero" (click)="scrollToSection('hero', $event)">{{ translate('nav.home') }}</a>
+    <a href="#about" (click)="scrollToSection('about', $event)">{{ translate('nav.about') }}</a>
+    <a href="#skills" (click)="scrollToSection('skills', $event)">{{ translate('nav.skills') }}</a>
+    <a href="#projects" (click)="scrollToSection('projects', $event)">{{ translate('nav.projects') }}</a>
+    <a href="#experience" (click)="scrollToSection('experience', $event)">{{ translate('nav.experience') }}</a>
+    <a href="#contact" (click)="scrollToSection('contact', $event)">{{ translate('nav.contact') }}</a>
     <div class="header-actions">
       <button 
         type="button"

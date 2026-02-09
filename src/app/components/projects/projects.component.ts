@@ -346,4 +346,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       window.open(github, '_blank', 'noopener,noreferrer');
     }
   }
+
+  /** Défile vers la section contact (évite NG04002) */
+  scrollToContact(): void {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }

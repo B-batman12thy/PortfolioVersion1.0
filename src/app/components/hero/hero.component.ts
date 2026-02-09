@@ -277,7 +277,8 @@ private initializeAnimations(): void {
     const bubbles = document.querySelectorAll('.bubble');
     const leftContent = document.querySelector('.left');
     const rightContent = document.querySelector('.right');
-    const ctaButton = document.querySelector('.cta-button');
+    const ctaButton = document.querySelector('.hero-content .btn-secondary');
+    // .btn-secondary est un <button> pour éviter l'interception du routeur (NG04002)
 
     if (!bubbles.length || !leftContent || !rightContent || !ctaButton) {
       console.warn('Certains éléments du hero ne sont pas trouvés');
@@ -319,7 +320,7 @@ private initializeAnimations(): void {
     }, '-=0.8');
 
     // Animation du bouton CTA
-    this.masterTimeline.to('.cta-button', {
+    this.masterTimeline.to('.hero-content .btn-secondary', {
       opacity: 1,
       y: 0,
       duration: 0.6,
@@ -456,28 +457,12 @@ private initializeAnimations(): void {
       heroImage.addEventListener('mouseenter', this.onImageHover.bind(this));
       heroImage.addEventListener('mouseleave', this.onImageLeave.bind(this));
     }
-
-    // Animation au clic sur le bouton CTA
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) {
-      ctaButton.addEventListener('click', this.onCtaClick.bind(this));
-    }
+    // Le bouton CTA : scroll géré en JS pour éviter que le routeur intercepte #contact (NG04002)
   }
-   private onCtaClick(event: Event): void {
-    // Animation de "pulse" sur les bulles (sans variation de couleur)
-    gsap.to('.bubble', {
-      scale: 1.5,
-      duration: 0.2,
-      yoyo: true,
-      repeat: 1,
-      stagger: 0.02,
-      ease: 'power2.inOut'
-    });
 
-    // Petit délai avant la navigation
-    setTimeout(() => {
-      // La navigation sera gérée par routerLink dans le template
-    }, 300);
+  /** Défile vers la section contact (bouton sans href pour éviter NG04002) */
+  scrollToContact(): void {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   translate(key: string): string {

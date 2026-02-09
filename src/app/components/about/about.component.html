@@ -32,7 +32,7 @@
               <span class="btn-icon" [innerHTML]="getIcon('file', 18)"></span>
               {{ translate('about.downloadCV') }}
             </button>
-            <a href="#contact" class="btn-secondary">
+            <a href="#contact" class="btn-secondary" (click)="scrollToContact($event)">
               <span class="btn-icon" [innerHTML]="getIcon('mail', 18)"></span>
               {{ translate('about.contact') }}
             </a>

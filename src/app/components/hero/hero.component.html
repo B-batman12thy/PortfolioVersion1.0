@@ -30,12 +30,10 @@
   <div class="hero-content">
     <div class="left">
       <div class="typing-text" [innerHTML]="displayedText"></div>
-      <a routerLink="/#contact" class="cta-button" 
-         role="button" 
-         aria-label="Aller à la section contact">
-        <span class="cta-text">{{ translate('hero.cta') }}</span>
-        <span class="cta-icon" aria-hidden="true" [innerHTML]="getIcon('arrow-right', 20)"></span>
-      </a>
+      <button type="button" class="btn-secondary" (click)="scrollToContact()" aria-label="Aller à la section contact">
+        <span class="btn-icon" [innerHTML]="getIcon('mail', 18)"></span>
+        {{ translate('hero.cta') }}
+      </button>
     </div>
     
     <div class="right">

@@ -92,6 +92,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // La mise à jour de currentLanguage se fera via l'observable
   }
 
+  /** Défile vers une section sans déclencher le routeur Angular (évite NG04002) */
+  scrollToSection(sectionId: string, event: Event): void {
+    event.preventDefault();
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   translate(key: string): string {
     return this.translationService.translate(key);
   }
