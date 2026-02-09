@@ -14,6 +14,7 @@ interface Project {
   year: string;
   github?: string;
   featured?: boolean;
+  descriptionKey?: string;
 }
 
 @Component({
@@ -42,40 +43,44 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         title: 'Socium',
         description: 'Platforme SIRH moderne avec suivi des commandes, gestion des utilisateurs et tableau de bord analytics en temps réel.',
         link: 'https://socium.link/',
-        imageUrl: '/assets/projects/yoon-admin.jpg',
+        imageUrl: '/assets/socium.jpeg',
         technologies: ['Angular', 'TypeScript', 'RxJS', 'Material UI'],
         status: 'Terminé',
         year: '2024',
         github: 'https://github.com/djiby/yoon-admin',
-        featured: true
+        featured: true,
+        descriptionKey: 'projects.socium.description'
       },
       {
         title: 'Tooshare Platform',
         description: 'Plateforme de partage et collaboration avec système de permissions avancé et interface utilisateur intuitive.',
         link: 'https://www.tooshare.com/',
-        imageUrl: '/assets/projects/tooshare.jpg',
+        imageUrl: '/assets/tooshare.jpg',
         technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-        status: 'En maintenance',
+        status: 'Terminé',
         year: '2023',
-        featured: true
+        featured: true,
+        descriptionKey: 'projects.tooshare.description'
       },
       {
         title: 'Jaangal ',
         description: 'Platforme edtech qui permet aux eleeves et etudiant d\'avoir un reseau social',
         link: 'https://app-demo.jaangal.com/?q=',
-        imageUrl: '/assets/projects/codefront.jpg',
+        imageUrl: '/assets/jaangal.png',
         technologies: ['Next.js', 'Stripe', 'PostgreSQL', 'Prisma'],
         status: 'Terminé',
-        year: '2024'
+        year: '2024',
+        descriptionKey: 'projects.jaangal.description'
       },
       {
         title: 'RSTB platform',
         description: 'Site vitrine moderne et responsive avec animations fluides et optimisation SEO avancée.',
         link: 'https://rstb-link.com/',
-        imageUrl: '/assets/projects/portfolio.jpg',
+        imageUrl: '/assets/rstb.webp',
         technologies: ['Angular', 'SCSS', 'Three.js', 'Vercel'],
-        status: 'En cours',
-        year: '2025'
+        status: 'Terminé',
+        year: '2025',
+        descriptionKey: 'projects.rstb.description'
       }
     ],
     'Mobile Development': [
@@ -83,29 +88,32 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         title: 'Daara Academy',
         description: 'Application éducative webe gamifiée pour apprendre la programmation avec des défis interactifs.',
         link: 'https://daaraacademy.com/',
-        imageUrl: '/assets/projects/daara.jpg',
+        imageUrl: '/assets/daaara-academy.png',
         technologies: ['React Native', 'Firebase', 'Redux', 'Expo'],
         status: 'Terminé',
         year: '2023',
-        featured: true
+        featured: true,
+        descriptionKey: 'projects.daara.description'
       },
       {
         title: 'Denkane Mobile',
         description: 'Refonte complète de l\'application mobile de gestion des transactions financières Orange Money.',
         link: 'https://denkane.sn',
-        imageUrl: '/assets/projects/denkane.jpg',
+        imageUrl: '/assets/denkane.jpg',
         technologies: ['Ionic', 'Angular', 'Capacitor', 'Firebase'],
         status: 'En maintenance',
-        year: '2023'
+        year: '2023',
+        descriptionKey: 'projects.denkane.description'
       },
       {
         title: 'Cuberfit',
         description: 'Application de suivi sportif avec géolocalisation, statistiques détaillées et défis communautaires.',
         link: 'https://www.cuberfit.com',
-        imageUrl: '/assets/projects/fitness.jpg',
+        imageUrl: '/assets/cuberfit.webp',
         technologies: ['Flutter', 'Dart', 'Firebase', 'Google Maps'],
         status: 'En cours',
-        year: '2024'
+        year: '2024',
+        descriptionKey: 'projects.cuberfit.description'
       }
     ],
     // 'UI/UX Design': [
@@ -174,6 +182,15 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       if (cat.nameKey) {
         cat.name = this.translationService.translate(cat.nameKey);
       }
+    });
+
+    // Update project descriptions
+    Object.values(this.projects).forEach(categoryProjects => {
+      categoryProjects.forEach(project => {
+        if (project.descriptionKey) {
+          project.description = this.translationService.translate(project.descriptionKey);
+        }
+      });
     });
   }
 

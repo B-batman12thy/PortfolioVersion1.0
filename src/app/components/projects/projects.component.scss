@@ -93,7 +93,7 @@
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
       transition: all 0.3s ease;
       opacity: 0;
       transform: translateY(20px);
@@ -145,7 +145,7 @@
       gap: 0.3rem;
       padding: 0.4rem 0.8rem;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
       border-radius: 50px;
       color: var(--text-secondary);
       font-weight: 500;
@@ -229,7 +229,7 @@
       position: relative;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
@@ -534,15 +534,20 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   25% {
     transform: translateY(-10px) rotate(3deg);
   }
+
   50% {
     transform: translateY(-15px) rotate(0deg);
   }
+
   75% {
     transform: translateY(-8px) rotate(-2deg);
   }

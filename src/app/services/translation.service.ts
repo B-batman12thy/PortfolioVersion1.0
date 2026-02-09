@@ -86,6 +86,15 @@ export class TranslationService {
     'projects.stats.clients': { fr: 'Clients satisfaits', en: 'Satisfied clients' },
     'projects.stats.experience': { fr: 'Années d\'expérience', en: 'Years of experience' },
 
+    // Project Descriptions
+    'projects.socium.description': { fr: 'Platforme SIRH moderne avec suivi des commandes, gestion des utilisateurs et tableau de bord analytics en temps réel.', en: 'Modern HRIS platform with order tracking, user management, and real-time analytics dashboard.' },
+    'projects.tooshare.description': { fr: 'Plateforme de partage et collaboration avec système de permissions avancé et interface utilisateur intuitive.', en: 'Sharing and collaboration platform with advanced permission system and intuitive user interface.' },
+    'projects.jaangal.description': { fr: 'Platforme edtech qui permet aux eleeves et etudiant d\'avoir un reseau social', en: 'Edtech platform allowing pupils and students to have a social network' },
+    'projects.rstb.description': { fr: 'Site vitrine moderne et responsive avec animations fluides et optimisation SEO avancée.', en: 'Modern and responsive showcase site with fluid animations and advanced SEO optimization.' },
+    'projects.daara.description': { fr: 'Application éducative webe gamifiée pour apprendre la programmation avec des défis interactifs.', en: 'Gamified web educational application to learn programming with interactive challenges.' },
+    'projects.denkane.description': { fr: 'Refonte complète de l\'application mobile de gestion des transactions financières Orange Money.', en: 'Complete redesign of the Orange Money financial transaction management mobile application.' },
+    'projects.cuberfit.description': { fr: 'Application de suivi sportif avec géolocalisation, statistiques détaillées et défis communautaires.', en: 'Sports tracking application with geolocation, detailed statistics, and community challenges.' },
+
     // Experience
     'experience.tag': { fr: 'Expérience', en: 'Experience' },
     'experience.title': { fr: 'Mon parcours professionnel', en: 'My professional journey' },
