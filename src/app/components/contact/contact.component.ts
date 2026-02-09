@@ -69,23 +69,29 @@ export class ContactComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Soumettre le formulaire
+  /** Email où recevoir les messages du formulaire */
+  readonly contactEmail = 'thioubdjiby96@gmail.com';
+
+  // Soumettre le formulaire : ouvre le client mail avec destinataire thioubdjiby96@gmail.com
   onSubmit(): void {
-    if (this.isFormValid()) {
-      this.isSubmitting = true;
-      
-      // Simulation d'envoi
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.showSuccess = true;
-        this.resetForm();
-        
-        // Masquer le message après 3 secondes
-        setTimeout(() => {
-          this.showSuccess = false;
-        }, 3000);
-      }, 1500);
-    }
+    if (!this.isFormValid()) return;
+    this.isSubmitting = true;
+
+    const subject = encodeURIComponent(`Contact Portfolio - ${this.formData.name.trim()}`);
+    const body = encodeURIComponent(
+      `Nom: ${this.formData.name.trim()}\n` +
+      `Email: ${this.formData.email.trim()}\n\n` +
+      `Message:\n${this.formData.message.trim()}`
+    );
+    const mailtoUrl = `mailto:${this.contactEmail}?subject=${subject}&body=${body}`;
+
+    window.location.href = mailtoUrl;
+    this.isSubmitting = false;
+    this.showSuccess = true;
+    this.resetForm();
+    setTimeout(() => {
+      this.showSuccess = false;
+    }, 5000);
   }
 
   // Vérifier la validité du formulaire
